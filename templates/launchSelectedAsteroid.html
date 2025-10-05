@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Asteroid Orbit View</title>
+
+    <!--Three.js-->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #scene-container {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+
+        #overlay {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="scene-container"></div>
+    <div id="overlay">
+        <strong>Asteroid:</strong> {{ asteroid.name }}<br>
+        <button id="launchBtn">Launch Anywhere</button>
+        <button id="seeImpactBtn">See Impact</button>
+    </div>
+
+    <!--Pass asteroid data from Flask-->
+   <script>
+    // Attach the Flask asteroid object to window
+    window.ASTEROID_DATA = {{ asteroid | tojson }};
+    console.log("ASTEROID_DATA:", window.ASTEROID_DATA);
+</script>
+    <!-- JS for animation -->
+    <script src="{{ url_for('static', filename='js/selected_asteroids.js') }}"></script>
+</body>
+
+</html>

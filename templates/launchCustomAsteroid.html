@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Launch Asteroid</title>
+</head>
+<body>
+    <!--3D Scene Container-->
+    <div id="scene-container" style="width: 600px; height: 600px; border: 1px solid black;"></div>
+
+    <!--Pass asteroid data to JS-->
+    <script>
+        const ASTEROID_DATA = {{ asteroid | tojson }};
+    </script>
+
+    <!--Three.js library-->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/selected_asteroids.js') }}" defer></script>
+
+    <!--Launch button-->
+    <div style="margin-top: 10px;">
+        <button id="manualLaunch" type="button">Launch Anywhere</button>
+    </div>
+</body>
+</html>

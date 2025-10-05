@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: url("../img/select-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Zalando Sans', sans-serif;
+    background-color: #FFEBAF;
+}
+
+.page-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: rgb(255, 235, 173, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.date-form {
+    display: flex;
+    background-color: rgb(40, 40, 100);
+    margin: 0 auto;
+    height: 2.5%;
+    width: min(100%, 100vw);
+    flex-wrap: wrap;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    align-items: center;
+}
+
+
+
+.fetchAsteroids {
+    display: flex;
+    margin: 20px auto;
+    /* centers horizontally */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    border-radius: 100px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1%;
+    background-color: rgb(255, 235, 173);
+    width: 178px;
+    height: 50px;
+    color: rgb(40, 40, 100);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Zalando Sans SemiExpanded', sans-serif;
+}
+
+.start-date {
+    margin-left: min(10%,5vw);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: large;
+    background-color: rgba(255, 255, 255, 0.39);
+    padding: 15px;
+    border-radius: 10px;
+    align-items: center;
+    font-family: 'Zalando Sans SemiExpanded', sans-serif;
+}
+
+.start-input {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.end-date {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    font-size: large;
+    background-color: rgba(255, 255, 255, 0.39);
+    padding: 15px;
+    border-radius: 10px;
+    align-items: center;
+    font-family: 'Zalando Sans SemiExpanded', sans-serif;
+}
+
+.end-input {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+ul li + hr {
+    border: none; 
+    border-bottom: 2px solid rgb(44, 44, 44); 
+    margin: 5px 0;
+}
+
+@media (max-width: 1200px) {}
+
+
+@media (max-width: 540px) {
+    .date-form {
+        flex-direction: column;
+        height: auto;
+        gap: 1em;
+        padding: 10px;
+    }
+
+    .start-date {
+        margin-left: 0;
+    }
+
+    .end-date {
+        margin-left: 5%;
+    }
+}

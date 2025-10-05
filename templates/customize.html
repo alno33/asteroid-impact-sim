@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customize Asteroid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customize.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen w-screen overflow-hidden">
+    <!-- Background video -->
+    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover -z-10">
+        <source src="{{ url_for('static', filename='videos/customize-bg.mp4') }}" type="video/mp4">
+    </video>
+
+    <div class="bg-black/50 flex flex-col items-center justify-center h-full w-full text-center gap-6">
+        <span class="text-white text-5xl sm:text-4xl font-bold" style="font-family: 'Zalando Sans Expanded'">
+            Create Your Own Asteroid
+        </span>
+
+        <!-- Preview box -->
+        <div id="scene-container" class="w-[400px] h-[400px] border border-black mt-3 sm:mt-1"></div>
+
+        <!-- Form -->
+        <form method="post" class="flex flex-col gap-4 w-64" action="{{ url_for('launchCustom') }}">
+            <!-- Size slider -->
+            <label for="size" class="flex flex-col">
+                <span>Size (m): <span id="sizeValue">500</span></span>
+                <input type="range" id="size" name="size" min="1" max="1000" value="500"
+                       class="accent-blue-600 w-full"
+                       oninput="sizeValue.textContent = this.value">
+            </label>
+
+            <!-- Velocity slider -->
+            <label for="velocity" class="flex flex-col">
+                <span>Velocity (km/s): <span id="velocityValue">50</span></span>
+                <input type="range" id="velocity" name="velocity" min="1" max="100" value="50"
+                       class="accent-green-600 w-full"
+                       oninput="velocityValue.textContent = this.value">
+            </label>
+
+            <!-- Submit button -->
+            <button type="submit"
+                    class="text-white px-4 py-2 bg-teal-600 rounded-2xl hover:bg-teal-700 transition text-lg sm:text-xl w-fit self-center"
+                    style="font-family: 'Zalando Sans Expanded'">
+                Launch
+            </button>
+        </form>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="{{ url_for('static', filename='js/customise.js') }}" defer></script>
+</body>
+</html>

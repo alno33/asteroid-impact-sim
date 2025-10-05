@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: url("../img/hit.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    background-color: #FFEBAF;
+    color: black;
+}

@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <title>Select Meteorite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/selectExisting.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="page-container">
+        <!--to select start and end dates-->
+        <div class="header">
+            <form action="/select-asteroid" method="get" class="date-form">
+                <div class="start-date">
+                    <label for="start">Start Date:</label>
+                    <input type="date" id="start" name="startDate" required class="start-input"
+                        onchange="updateEndMax(this.value)">
+                </div>
+
+                <div class="end-date">
+                    <label for="end">End Date:</label>
+                    <input type="date" id="end" name="endDate" required class="end-input">
+                </div>
+                <button type="submit" class="fetchAsteroids">Fetch Asteroids</button>
+            </form>
+        </div>
+        <!--parse the data-->
+        <ul>
+            {% if no_results %}
+            <li class="text-center my-5 text-red-600 font-bold">
+                ⚠️ No asteroids found for this date range.
+            </li>
+            {% else %}
+            {% for asteroid in asteroids %}
+            <li class="text-center my-3">
+                <a class="text-lg font-bold" style="font-family: 'Zalando Sans SemiExpanded';"
+                    href="{{ url_for('launchSelected') }}?name={{ asteroid.name }}&diameter={{ '%.2f'|format(asteroid.diameter|float) }}&velocity={{ '%.2f'|format(asteroid.velocity|float) }}&miss={{ '%.2f'|format(asteroid.missDistance|float) }}">
+                    {{ asteroid.name }}
+                </a>
+                <br>
+                Size: {{ '%.2f'|format(asteroid.diameter|float) }} meters<br>
+                Velocity: {{ '%.2f'|format(asteroid.velocity|float) }} km/s<br>
+                Miss Distance: {{ '%.2f'|format(asteroid.missDistance|float) }} km
+            </li>
+            <hr>
+            {% endfor %}
+            {% endif %}
+        </ul>
+
+    </div>
+
+    <script>
+        function updateEndMax(startDate) {
+            const start = new Date(startDate);
+            const maxEnd = new Date(start);
+            maxEnd.setDate(start.getDate() + 6); 
+            const maxStr = maxEnd.toISOString().split('T')[0];
+            document.getElementById('end').setAttribute('max', maxStr);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asteroid Impact Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="relative h-screen w-screen overflow-hidden">
+    <!-- Background video -->
+    <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover -z-10">
+        <source src="{{ url_for('static', filename='videos/home-bg.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Page content -->
+    <div class="bg-black/50 flex flex-col items-center justify-center h-full w-full text-center gap-6 text-white px-4">
+    <p class="text-4xl sm:text-5xl font-bold drop-shadow-lg">
+            Welcome to the Asteroid Impact Simulator
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="window.location.href='/select-asteroid'" 
+                    class="px-6 py-3 bg-sky-600 rounded-2xl hover:bg-sky-700 transition text-md sm:text-xl">
+                Select Existing Asteroid
+            </button>
+            <button onclick="window.location.href='/customize'" 
+                    class="px-6 py-3 bg-teal-600 rounded-2xl hover:bg-teal-700 transition text-md sm:text-xl">
+                Customize Asteroid
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
